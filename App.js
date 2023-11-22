@@ -1,4 +1,4 @@
-import { AntDesign, Entypo, Feather, FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign, Entypo, Feather, FontAwesome, Ionicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -26,7 +26,7 @@ const BottomTabBar = () => {
 
       <Tab.Screen name="Search" component={SearchScreen}
         options={{
-          headerShown: false, tabBarLabel: "Home", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
+          headerShown: false, tabBarLabel: "Search", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
             focused ? (
               <FontAwesome name="search" size={24} color="black" />
             ) : (
@@ -39,9 +39,9 @@ const BottomTabBar = () => {
         options={{
           headerShown: false, tabBarLabel: "Event", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
             focused ? (
-              <MaterialCommunityIcons name="message" size={24} color="black" />
+              <FontAwesome5 name="calendar-day" size={24} color="black" />
             ) : (
-              <Feather name="message-square" size={24} color="black" />
+              <FontAwesome5 name="calendar" size={24} color="black" />
             ),
         }}
       />
