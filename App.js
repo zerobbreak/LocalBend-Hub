@@ -2,10 +2,9 @@ import { AntDesign, Entypo, Feather, FontAwesome, Ionicons, MaterialCommunityIco
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import DiscoveryScreen from "./screens/DiscoveryScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
-import OverviewScreen from "./screens/OverviewScreen";
+import OverviewScreen from "./screens/Event";
 import ProfileScreen from "./screens/ProfileScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import Results from "./screens/Results";
@@ -36,7 +35,7 @@ const BottomTabBar = () => {
         }}
       />
 
-      <Tab.Screen name="Overview" component={OverviewScreen}
+      <Tab.Screen name="Event" component={OverviewScreen}
         options={{
           headerShown: false, tabBarLabel: "Event", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
             focused ? (
