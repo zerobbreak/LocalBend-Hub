@@ -14,7 +14,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb+srv://zer:unathi@cluster0.18zdpwh.mongodb.net/", {
+mongoose.connect("database mongodb", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {

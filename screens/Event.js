@@ -8,7 +8,7 @@ const EventScreen = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://192.168.1.148:8080/events");
+        const response = await fetch("http://ip-address/events");
         const data = await response.json();
         console.log(data)
 

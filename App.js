@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 // import LoginScreen from "./screens/LoginScreen";
-import OverviewScreen from "./screens/Event";
+import EventScreen from "./screens/Event";
 import ProfileScreen from "./screens/ProfileScreen";
 // import RegisterScreen from "./screens/RegisterScreen";
 import Results from "./screens/Results";
@@ -35,7 +35,7 @@ const BottomTabBar = () => {
         }}
       />
 
-      <Tab.Screen name="Event" component={OverviewScreen}
+      <Tab.Screen name="Event" component={EventScreen}
         options={{
           headerShown: false, tabBarLabel: "Event", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
             focused ? (
