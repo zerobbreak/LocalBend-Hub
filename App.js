@@ -1,18 +1,15 @@
+import { AntDesign, Entypo, Feather, FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import LoginScreen from "./screens/LoginScreen";
-import RegisterScreen from "./screens/RegisterScreen";
-import HomeScreen from "./screens/HomeScreen";
 import DiscoveryScreen from "./screens/DiscoveryScreen";
-import SearchScreen from "./screens/SearchScreen";
+import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
 import OverviewScreen from "./screens/OverviewScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 import Results from "./screens/Results";
-import { Entypo } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
+import SearchScreen from "./screens/SearchScreen";
 
 const BottomTabBar = () => {
   const Tab = createBottomTabNavigator();
@@ -28,16 +25,6 @@ const BottomTabBar = () => {
       }}
       />
 
-      <Tab.Screen name="Discover" component={DiscoveryScreen} options={{
-        headerShown: false, tabBarLabel: "Home", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
-          focused ? (
-            <Entypo name="home" size={24} color="black" />
-          ) : (
-            <AntDesign name="home" size={24} color="black" />
-          ),
-      }} 
-      />
-
       <Tab.Screen name="Search" component={SearchScreen}
         options={{
           headerShown: false, tabBarLabel: "Home", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
@@ -51,18 +38,18 @@ const BottomTabBar = () => {
 
       <Tab.Screen name="Overview" component={OverviewScreen}
         options={{
-          headerShown: false, tabBarLabel: "Home", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
+          headerShown: false, tabBarLabel: "Event", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
             focused ? (
-              <Entypo name="home" size={24} color="black" />
+              <MaterialCommunityIcons name="message" size={24} color="black" />
             ) : (
-              <AntDesign name="home" size={24} color="black" />
+              <Feather name="message-square" size={24} color="black" />
             ),
         }}
       />
 
       <Tab.Screen name="Profile" component={ProfileScreen}
         options={{
-          headerShown: false, tabBarLabel: "Home", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
+          headerShown: false, tabBarLabel: "Profile", tabBarLabelStyle: { color: '#000' }, tabBarIcon: ({ focused }) =>
             focused ? (
               <Ionicons name="person" size={24} color="black" />
             ) : (

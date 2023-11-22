@@ -3,11 +3,15 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
+
+  
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white", alignItems: 'center' }}>
       <View style={{ marginTop: 50 }}>
@@ -35,7 +39,21 @@ const LoginScreen = () => {
               <TextInput value={password} onChangeText={(text) => setPassword(text)} placeholderTextColor={"grey"} style={{ color: 'gray', marginVertical: 10, width: 270, fontSize: password ? 16 : 16 }} placeholder='enter your password' />
             </View>
           </View>
+
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 12 }}>
+            <Text>Keep me logged in</Text>
+            <Text style={{ fontWeight: 500, color: '#007FFF' }}>Forget Password</Text>
+          </View>
         </View>
+
+        <View style={{ marginTop: 45 }} />
+        <Pressable onPress={() => navigation.navigate("Main")} style={{ width: 200, backgroundColor: "black", padding: 15, marginTop: 40, marginLeft: 'auto', marginRight: 'auto', borderRadius: 6 }}>
+          <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Login</Text>
+        </Pressable>
+
+        <Pressable onPress={() => navigation.navigate("Sign Up")} style={{ marginTop: 12 }}>
+          <Text style={{ textAlign: 'center', fontSize: 14 }}>Don't have an account? Sign Up</Text>
+        </Pressable>
       </KeyboardAvoidingView>
     </SafeAreaView>
   )
