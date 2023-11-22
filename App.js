@@ -3,10 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
-import LoginScreen from "./screens/LoginScreen";
+// import LoginScreen from "./screens/LoginScreen";
 import OverviewScreen from "./screens/Event";
 import ProfileScreen from "./screens/ProfileScreen";
-import RegisterScreen from "./screens/RegisterScreen";
+// import RegisterScreen from "./screens/RegisterScreen";
 import Results from "./screens/Results";
 import SearchScreen from "./screens/SearchScreen";
 
@@ -65,8 +65,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Sign Up" component={RegisterScreen} options={{ headerShown: false }} />
+        {/* <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Sign Up" component={RegisterScreen} options={{ headerShown: false }} /> */}
         <Stack.Screen name="Main" component={BottomTabBar} options={{ headerShown: false }} />
         <Stack.Screen name="Search Results" component={Results} options={{ headerShown: false }} />
       </Stack.Navigator>

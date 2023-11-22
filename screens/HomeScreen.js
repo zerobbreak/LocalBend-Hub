@@ -3,15 +3,28 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FontAwesome, Feather } from '@expo/vector-icons';
 import Card from '../components/Card';
-import Category from '../components/Category';
-
+import CategoryCard from "../components/CategoryCard";
 const HomeScreen = () => {
   const items = [
     {
-      title: "john Wick", 
-      icon_name: "drum"
-    }
-  ]
+      title: 'Home',
+      icon: 'home',
+    },
+    {
+      title: 'Events',
+      icon: 'calendar-alt',
+    },
+    {
+      title: 'Services',
+      icon: 'toolbox',
+    },
+    {
+      title: 'Profile',
+      icon: 'user',
+    },
+    // Add more items as needed
+  ];
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -32,16 +45,20 @@ const HomeScreen = () => {
         </View>
         <View style={{ marginTop: -4, padding: 20 }}>
           <Text>Categories</Text>
-          <Category data={items}/>
+          <View>
+            {items.map((item, index) => {
+              <CategoryCard title={item.title} icon={item.icon_name} key={index}/>
+            })}
+          </View>
         </View>
         <View style={{ marginTop: 20, padding: 20, }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
             <Text>Events</Text>
             <Feather name="chevron-right" size={24} color="black" />
           </View>
-          <View style={{flexDirection: 'row', alignItems: 'center', gap: 20}}>
-            <Card title="Festival" eventType="Summer Festival" img={require("../imgs/SignUp.jpg")} heart />
-            <Card title="Festival" eventType="Summer Festival" img={require("../imgs/SignUp.jpg")} heart />
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+            <Card title="Festival" eventType="Summer Festival" img={require("../imgs/Concert2.jpg")} heart />
+            <Card title="Festival" eventType="Summer Festival" img={require("../imgs/Concert.jpg")} heart />
           </View>
         </View>
       </ScrollView>
