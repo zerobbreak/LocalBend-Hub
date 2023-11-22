@@ -1,15 +1,27 @@
 import React from 'react'
-import { View } from 'react-native'
+import { FlatList, View, Text } from 'react-native'
+import { FontAwesome5 } from '@expo/vector-icons';
 
-const Category = () => {
+const Category = ({data}) => {
   return (
-    <View>
-        <View>
-            <Text>Icon</Text>
-        </View>
-        <Text>Title</Text>
-    </View>
+    <FlatList 
+        data={data}
+        renderItem={({item}) => CategoryCard(item.title, item.icon_name)}
+        keyExtractor={(item) => item.id}
+    />
   )
+}
+
+const CategoryCard = ({title, icon}) => {
+    return (
+        <View>
+            <View style={{justifyContent: 'center', alignItems: 'center', backgroundColor: '#d9d9d9'}}>
+                <FontAwesome5 name={icon} size={24} color="black" />
+            </View>
+
+            <Text>{title}</Text>
+        </View>
+    )
 }
 
 export default Category

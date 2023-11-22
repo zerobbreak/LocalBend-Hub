@@ -1,8 +1,9 @@
-import { View, Text, Image, KeyboardAvoidingView, TextInput, Pressable } from 'react-native';
+import { View, Text, Image, KeyboardAvoidingView, TextInput, Pressable, Alert } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AntDesign, MaterialCommunityIcons, Octicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 
 const RegisterScreen = () => {
@@ -12,7 +13,22 @@ const RegisterScreen = () => {
   const navigation = useNavigation();
 
   const handleRegister = () => {
+    const user = {
+      name: name,
+      email: email,
+      password: password,
+    }
 
+    axios.post("http://192.168.1.148:8080/register", user).then((response) => {
+      console.log(response.data);
+      Alert.alert("Registration Successful", "you have been registered successfully");
+      setName("")
+      setEmail("")
+      setPassword("")
+    }).catch((error) => {
+      Alert.alert("Registration failed", "An error occured during registration");
+      console.log("error", error);
+    })
   }
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center' }}>

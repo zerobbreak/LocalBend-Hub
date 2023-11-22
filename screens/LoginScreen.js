@@ -1,9 +1,11 @@
-import { View, Text, TextInput, Pressable, Image, ScrollView, KeyboardAvoidingView } from 'react-native';
-import React, { useState } from 'react';
+import { View, Text, TextInput, Pressable, Image, ScrollView, KeyboardAvoidingView, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 const LoginScreen = () => {
 
@@ -11,7 +13,40 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
 
-  
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const token = await AsyncStorage.getItem("authToken");
+        if (token) {
+          setTimeout(() => {
+            navigation.replace("Main");
+          }, 400);
+        }
+      } catch (error) {
+        console.log("Error", error);
+      }
+    }
+
+    checkLoginStatus();
+  }, []);
+
+  const handleLogin = () => {
+    const user = {
+      email: email,
+      password: password,
+    }
+
+    axios.post("http://192.168.1.148:8080/login", user).then((response) => {
+      console.log(response);
+      const token = response.data.token;
+      AsyncStorage.setItem("authToken", token);
+      navigation.navigate("Home")
+    }).catch((error) => {
+      Alert.alert("Login erorr")
+      console.log("Error", error);
+    })
+  }
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white", alignItems: 'center' }}>
       <View style={{ marginTop: 50 }}>
@@ -47,7 +82,7 @@ const LoginScreen = () => {
         </View>
 
         <View style={{ marginTop: 45 }} />
-        <Pressable onPress={() => navigation.navigate("Main")} style={{ width: 200, backgroundColor: "black", padding: 15, marginTop: 40, marginLeft: 'auto', marginRight: 'auto', borderRadius: 6 }}>
+        <Pressable onPress={handleLogin} style={{ width: 200, backgroundColor: "black", padding: 15, marginTop: 40, marginLeft: 'auto', marginRight: 'auto', borderRadius: 6 }}>
           <Text style={{ color: 'white', textAlign: 'center', fontWeight: 'bold', fontSize: 16 }}>Login</Text>
         </Pressable>
 

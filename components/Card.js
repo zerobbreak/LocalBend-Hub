@@ -8,12 +8,12 @@ const Card = ({ title, eventType, img, Date, heart }) => {
     <ImageBackground borderRadius={5} source={img} style={{ width: 150, height: 160, padding: 5, marginTop: 10 }}>
 
       {heart ? (
-        <View style={{ flexDirection: 'row', gap: 2 }}>
+        <View style={{ flexDirection: 'row', gap: 20 }}>
           <View style={{ backgroundColor: '#000', width: 90, height: 30, padding: 4, }}>
             <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16, textAlign: 'center' }}>{title}</Text>
           </View>
           <View>
-            <AntDesign name={heart} size={24} color="black" />
+            <AntDesign name="heart" size={24} color="white" />
           </View>
         </View>
       ) : (
