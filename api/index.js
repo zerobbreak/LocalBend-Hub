@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
+const insertDummyData = require("./insertDummyData");
 
 const app = express();
 const port = 8080
@@ -15,9 +16,12 @@ app.use(bodyParser.json());
 
 mongoose.connect("mongodb+srv://zer:unathi@cluster0.18zdpwh.mongodb.net/", {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 }).then(() => {
     console.log("Connect to Mongodb");
+
+    //Insert dummy data after connecting to MongoDB
+    insertDummyData();
 }).catch((err) => {
     console.log("error connecting to Mongodb", err)
 });
@@ -152,3 +156,14 @@ app.get("/user/:userId", (req, res) => {
         res.status(500).json({ message: "Error getting the users" });
     }
 });
+
+app.get("/events", async (req, res) => {
+    try {
+        // Use req.query to access query parameters
+        const events = await Events.find();
+        res.status(200).json(events);
+    } catch (error) {
+        console.log("Error fetching events: ", error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+})
